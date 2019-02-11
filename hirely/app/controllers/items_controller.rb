@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_users, only: [:new, :edit, :create, :update]
 
   def index
-    @items = Item.all
+    @items = Item.search(params[:search])
   end
 
   def show
@@ -35,7 +35,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :user_id, :description, :catagory)
+
+    params.require(:item).permit(:name, :price, :description, :catagory, :search).merge(user_id: current_user.id)
   end
 
   def find_item

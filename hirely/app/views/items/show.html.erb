@@ -1,5 +1,11 @@
-<h1><%= @item.name %></h1>
 
+
+
+
+
+<%= button_to 'Hire', {:controller => "hires", :action => "create", :item_id => @item.id, :user_id=> current_user.id} , :method=>:post  %>
+
+<h1><%= @item.name %></h1>
 
 <h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
 
