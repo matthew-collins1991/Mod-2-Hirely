@@ -5,20 +5,22 @@ class SessionsController < ApplicationController
     end
 
     def create
-      @user = User.find_by("LOWER(email) = ?", user_params[:email].downcase)
-
-      if @user.present? && @user.authenticate(user_params[:password])
-        cookies.permanent.signed[:user_id] = @user.id
-        redirect_to items_path
-      else
-        render :new
-      end
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      log_in user
+      redirect_to user
+    else
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
+  end
 
-    def destroy
-      cookies.delete(:user_id)
-      redirect_to root_url
-    end
+
+  def destroy
+log_out
+redirect_to root_url
+end
+
 
     private
 
