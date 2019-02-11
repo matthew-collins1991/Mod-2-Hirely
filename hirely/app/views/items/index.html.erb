@@ -11,10 +11,17 @@
 
 <%= link_to 'create a new Item', new_item_path %>
 
-<ul>
+
   <% @items.each do |item| %>
-    <li>
-      <%= link_to item.name, item %>
-    </li>
+
+      <div class="card-deck">
+        <div class="card">
+        
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <%= link_to 'View', item, class:"btn btn-primary"%>
+          </div>
+        </div>
+        </div>
+
   <% end %>
-</ul>
