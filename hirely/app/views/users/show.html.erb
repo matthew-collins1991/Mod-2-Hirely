@@ -8,7 +8,7 @@
 
 <h2>Hired history</h2>
   <% @user.hired.each do |hire|%>
-    <h4><%= link_to hire.item.name, item_path(hire) %></h4>
+    <h4><%= link_to hire.item.name, item_path(hire.item.id) %></h4>
     <h4>Hired on: <%= hire.created_at.strftime("%d-%b-%Y") %></h4>
       <% if hire.hired == true && hire.user_id == @user.id%>
         <h5>Item Status: You are currently hiring this item.</h5>
