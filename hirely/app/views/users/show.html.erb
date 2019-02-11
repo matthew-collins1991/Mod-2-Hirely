@@ -6,17 +6,24 @@
 <h4><%= link_to item.name, item_path(item) %></h4>
 <% end %>
 
-<h4>Hired history</h4>
-
+<h2>Hired history</h2>
+  <% @user.hired.each do |hire|%>
+    <h4><%= link_to hire.item.name, item_path(hire) %></h4>
+    <h4>Hired on: <%= hire.created_at.strftime("%d-%b-%Y") %></h4>
+      <% if hire.hired == true && hire.user_id == @user.id%>
+        <h5>Item Status: You are currently hiring this item.</h5>
+        <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch  %>
+        <% elsif hire.hired == true && hire.user_id != @user.id%>
+        <h5>Item Status: Currently Unavailable</h5>
+        <% elsif hire.hired == false %>
+        <h5>Item Status: Available</h5>
+        <% else %>
+        <h5>error somewhere</h5>
+      <% end %>
+  <% end %>
 
 <%= link_to 'edit me', edit_user_path(@user) %>
-
-
-
-
-
-<%= link_to "All Users", users_path %>
-
+<br>
 <%= link_to "Add New Item", new_item_path %>
 <br>
 <%= link_to "All Items", items_path %>

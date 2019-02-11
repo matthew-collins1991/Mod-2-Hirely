@@ -1,3 +1,14 @@
+<% if @hire.hired == true %>
 <h1>Success message</h1>
 
 <h4><%= @hire.user.name %> has hired <%= @hire.item.name %></h4>
+
+<% else %>
+
+<h1>Success message</h1>
+
+<h4><%= @hire.user.name %> has returned <%= @hire.item.name %></h4>
+
+<% end %>
+
+<%= link_to "All Items", items_path %>
