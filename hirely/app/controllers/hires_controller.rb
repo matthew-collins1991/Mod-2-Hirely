@@ -30,7 +30,7 @@ class HiresController < ApplicationController
   private
 
   def hire_params
-    params.permit(:user_id, :item_id)
+    params.permit(:user_id, :item_id, :hired)
   end
 
 

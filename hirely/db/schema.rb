@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_094901) do
+ActiveRecord::Schema.define(version: 2019_02_11_161415) do
 
   create_table "hires", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hired"
     t.index ["item_id"], name: "index_hires_on_item_id"
     t.index ["user_id"], name: "index_hires_on_user_id"
   end

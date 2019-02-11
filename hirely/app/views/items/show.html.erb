@@ -1,9 +1,19 @@
 
 
 
+<% unless @item.user_id == current_user.id  %>
 
+<%= button_to 'Hire', {:controller => "hires", :action => "create", :item_id => @item.id, :user_id=> current_user.id, :hired => 1} , :method=>:post  %>
 
-<%= button_to 'Hire', {:controller => "hires", :action => "create", :item_id => @item.id, :user_id=> current_user.id} , :method=>:post  %>
+<% end  %>
+
+<% @item.hires.each do |hire| %>
+    <% if hire.hired == true %>
+
+    <h4> Item is unavailable</h4>
+    <% end %>
+<% end %>
+
 
 <h1><%= @item.name %></h1>
 
