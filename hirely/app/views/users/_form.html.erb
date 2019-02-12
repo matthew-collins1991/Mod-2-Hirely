@@ -2,35 +2,43 @@
 
 <%= form_for @user do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+<div class="form-group">
 
-  <br>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class:"form-control" , placeholder:"Enter first name" %>
+</div>
+
+<div class="form-group">
 
   <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <%= f.text_field :last_name, class:"form-control" , placeholder:"Enter last name" %>
+</div>
 
-  <br>
+<div class="form-group">
 
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email,  class:"form-control" , placeholder:"Enter email address" %>
+</div>
 
-  <br>
+<div class="form-group">
 
   <%= f.label :location %>
-  <%= f.text_field :location %>
+  <%= f.text_field :location , class:"form-control" , placeholder:"Enter your post code"%>
+</div>
 
-  <br>
+<div class="form-group">
 
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password , class:"form-control" , placeholder:"Enter your password" %>
+</div>
 
-  <br>
+<div class="form-group">
 
   <%= f.label :password_confirmation %>
-  <%= f.text_field :password_confirmation %>
+  <%= f.password_field :password_confirmation, class:"form-control" , placeholder:"Confirm your password" %>
 
-  <br>
+</div>
 
   <%= f.submit %>
+
 <% end %>

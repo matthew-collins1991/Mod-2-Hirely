@@ -1,25 +1,26 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :show, :update, :destroy]
-  before_action :find_items, only: [:new, :show, :edit, :create, :update]
+  before_action :find_user, only: [ :show,:edit, :update]
+  before_action :find_items, only: [:new, :show, :create, :edit, :update]
 
-    def index
-      @users = User.all
-    end
 
     def show
     end
 
     def new
       @user = User.new
+     # byebug
     end
 
     def create
+
     @user = User.new(user_params)
+
+
     if @user.save
       log_in @user
       redirect_to menu_path
     else
-
+      flash[:errors] = ['something went wrong, try again']
       render 'new'
     end
   end
@@ -34,10 +35,10 @@ class UsersController < ApplicationController
         redirect_to @user
     end
 
-    def destroy
-      @user.destroy
-      redirect_to users_path
-    end
+    # def destroy
+    #   @user.destroy
+    #   redirect_to users_path
+    # end
 
 
     private
