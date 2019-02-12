@@ -7,4 +7,5 @@ def index
 @item_reviews = ItemReview.all
 end
 
+
 end

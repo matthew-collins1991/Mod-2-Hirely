@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :hires
   has_many :item_reviews, through: :hires
 
+#-----------------------validations---------------------------
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -11,6 +12,21 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  validate :validate_postcode
+
+  def validate_postcode
+    ukpc = UKPostcode.parse(location)
+    if ukpc.full_valid?
+      location = ukpc
+    else
+      errors.add(:location, "not recognised as a UK postcode")
+    end
+  end
+#------------------------validations--------------------------
+
+
+
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -21,6 +37,9 @@ class User < ApplicationRecord
 
 
 
+  def location=(str)
+    super UKPostcode.parse(str).to_s
+  end
 
  def name
    "#{self.first_name} #{self.last_name}"
@@ -29,8 +48,5 @@ class User < ApplicationRecord
  def hired
    Hire.all.select{|x| x.user_id == self.id}
  end
-
-
-
 
 end

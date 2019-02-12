@@ -5,4 +5,12 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     include SessionsHelper
 
-  end
+    Google::Maps.configure do |config|
+  config.authentication_mode = Google::Maps::Configuration::API_KEY
+  config.api_key = 'AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA'
+end
+
+Google::Maps.configure do |config|
+  config.default_language = :en
+end
+end
