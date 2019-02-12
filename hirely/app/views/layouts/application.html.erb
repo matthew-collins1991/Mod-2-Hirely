@@ -10,6 +10,40 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-light" style="background-color: #acc9c7;">
+
+    <%= link_to "Hirely", menu_path, class:"navbar-brand" %>
+
+          <ul class="nav justify-content-end">
+
+        <% if current_user.present? %>
+
+        <li class="nav-item">
+          <%= link_to "Add Item", new_item_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "All Items", items_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="user_path" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#"></a>
+                <%= link_to "#{current_user.first_name.capitalize}", user_path(current_user.id), class:"dropdown-item" %>
+              <%= link_to "Log out", logout_path, method: :delete, class:"dropdown-item" %>
+          </div>
+        </li>
+
+        <%else  %>
+
+        <% end %>
+      </ul>
+
+        </nav>
+
+
+
+
     <%= yield %>
   </body>
 </html>
