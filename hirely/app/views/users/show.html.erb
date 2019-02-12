@@ -17,7 +17,7 @@
 <% end %>
 
 <h2>Hired history</h2>
-  <% @user.hired.each do |hire|%>
+  <% @user.hired.reverse_each do |hire|%>
     <h4><%= link_to hire.item.name, item_path(hire.item.id) %></h4>
     <h4>Hired on: <%= hire.created_at.strftime("%d-%b-%Y") %></h4>
       <% if hire.hired == true && hire.user_id == @user.id%>

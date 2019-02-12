@@ -8,7 +8,9 @@
 <h1>Success message</h1>
 
 <h4><%= @hire.user.name %> has returned <%= @hire.item.name %></h4>
-
+<br>
+<h5>Would you like to write a review?</h5>
+<%= render 'review_form' %>
 <% end %>
 
 <%= link_to "All Items", items_path %>

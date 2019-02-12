@@ -22,7 +22,24 @@
 
 <!-- only allow edit item if current user owns item -->
 <% if @item.user_id == current_user.id %>
-<%= link_to 'edit me', edit_item_path(@item) %>
+  <%= link_to 'edit me', edit_item_path(@item) %>
 <% end %>
+
+<h3>Item Reviews</h3>
+<br>
+  <% @count = 0 %>
+    <% @item.review.reverse_each do |c| %>
+
+      <p>
+      <%= radio_button_tag @count, 'true', c.reaction, disabled: true %>
+      <%= label_tag @count, "Upvote"%>
+      <%= radio_button_tag @count, 'false', !c.reaction, disabled: true %>
+      <%= label_tag @count, "Downvote"%>
+      </p>
+      <% @count += 1 %>
+      <h5> <%= c.content %></h5>
+    <br>
+    <br>
+    <% end %>
 
 <%= link_to "All items", items_path %>

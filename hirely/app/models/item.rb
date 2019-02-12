@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_many :hires
+  has_many :item_reviews, through: :hires
 
 
   def self.search(search)
@@ -18,5 +19,9 @@ class Item < ApplicationRecord
      end
  end
 
- 
+ def review
+   ItemReview.select{|x| x.hire.item.id == self.id}
+ end
+
+
 end

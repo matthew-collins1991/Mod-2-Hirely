@@ -1,0 +1,20 @@
+<%= form_tag(item_reviews_path, method: "post") do%>
+
+
+      <%= hidden_field_tag :hire_id %>
+      <%= hidden_field_tag :hire_id, "#{@hire.id}" %>
+    <br>
+      <%= radio_button_tag :reaction, true, :checked => true %>
+      <%= label_tag :reaction, "Upvote", :value => true%>
+      <%= radio_button_tag :reaction, false %>
+      <%= label_tag :reaction, "Downvote", :value => false%>
+    <br>
+
+
+      <%= label_tag (:content)%>
+    <br>
+      <%= text_area_tag (:content) %>
+
+    <br>
+      <%= submit_tag ("Post Review") %>
+<% end %>
