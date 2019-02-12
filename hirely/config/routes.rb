@@ -9,6 +9,7 @@ resources :item_reviews
 resources :hires
 resources :items
 resources :users
+resources :analytics
 get 'main_menu', to: 'mains#main_menu', as: 'menu'
 
 
