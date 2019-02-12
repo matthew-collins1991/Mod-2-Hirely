@@ -1,10 +1,14 @@
 
-
+<!-- only allow hire item if current user does not own item -->
 <% unless @item.user_id == current_user.id %>
-
-<%= button_to 'Hire', {:controller => "hires", :action => "create", :item_id => @item.id, :user_id=> current_user.id, :hired => 1} , :method=>:post  %>
-
-<% end  %>
+  <%= button_to 'Hire',
+   {:controller => "hires",
+    :action => "create",
+    :item_id => @item.id,
+    :user_id=> current_user.id,
+    :hired => 1} ,
+    :method=>:post  %>
+<% end %>
 
 <% @item.hires.each do |hire| %>
     <% if hire.hired == true %>
@@ -12,12 +16,13 @@
     <% end %>
 <% end %>
 
-
+<!-- Show who the item belongs to with a link to their profile -->
 <h1><%= @item.name %></h1>
-
 <h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
 
+<!-- only allow edit item if current user owns item -->
+<% if @item.user_id == current_user.id %>
 <%= link_to 'edit me', edit_item_path(@item) %>
-
+<% end %>
 
 <%= link_to "All items", items_path %>

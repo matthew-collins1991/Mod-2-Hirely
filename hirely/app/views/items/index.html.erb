@@ -2,13 +2,13 @@
 
 <h2>got to profile: <%= link_to self.current_user.name, user_path(self.current_user.id) %></h2>
 
+<%= link_to 'create a new Item', new_item_path %>
+
 <h4>Search by name</h4>
 <%= form_tag(items_path, method: :get) do %>
 <%= text_field_tag(:search, params[:search]) %>
 <%= submit_tag "Search" %>
 <% end %>
-
-<%= link_to 'create a new Item', new_item_path %>
 
 <ul>
   <% @items.each do |item| %>
