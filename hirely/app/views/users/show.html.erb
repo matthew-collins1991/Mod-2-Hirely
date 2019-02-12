@@ -4,6 +4,12 @@
  <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn-sm btn-info"%>
 
 
+ <div style="width:300px; height:auto">
+       <%= image_tag(@user.profile_pic, style:'width:100%') %>
+ </div>
+
+
+
 <h1><%= @user.name.capitalize %></h1>
 
 <br>
@@ -26,5 +32,3 @@
 <br>
 
 <h4>Hired history</h4>
-
-  
