@@ -17,6 +17,10 @@
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <%= link_to 'View', item, class:"btn btn-primary"%>
+
+            <% unless item.user_id == current_user.id %>
+            distance: <%= Google::Maps.distance("#{item.user.location}", "#{current_user.location}") %>
+            <% end %>
           </div>
         </div>
         </div>

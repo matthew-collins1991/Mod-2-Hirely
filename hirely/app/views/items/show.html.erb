@@ -20,6 +20,10 @@
 <h1><%= @item.name %></h1>
 <h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
 
+<!-- Show how far away item is unless current user owns item -->
+<% unless @item.user_id == current_user.id %>
+distance: <%= Google::Maps.distance("#{@item.user.location}", "#{current_user.location}") %>
+<% end %>
 <!-- only allow edit item if current user owns item -->
 <% if @item.user_id == current_user.id %>
   <%= link_to 'edit me', edit_item_path(@item) %>
