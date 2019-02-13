@@ -1,12 +1,12 @@
 
 <!-- only allow hire item if current user does not own item -->
-<% unless @item.user_id == current_user.id %>
+<% unless @item.user_id == current_user.id || (@item.hires.length > 0  &&  @item.hires.last.hired == true ) %>
   <%= button_to 'Hire',
    {:controller => "hires",
     :action => "create",
     :item_id => @item.id,
     :user_id=> current_user.id,
-    :hired => 1} ,
+    :hired => true} ,
     :method=>:post  %>
 <% end %>
 
@@ -18,13 +18,12 @@
 
 <% @item.hires.each do |hire| %>
     <% if hire.hired == true %>
-    <h4> Item is unavailable</h4>
+    <h4> This is already out for hire </h4>
     <% end %>
 <% end %>
 
 <!-- Show who the item belongs to with a link to their profile -->
 <h1><%= @item.name %></h1>
-<h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
 
 <!-- only allow edit item if current user owns item -->
 
@@ -43,29 +42,29 @@
   <h6><%= @item.description %></h6>
 
 
+<br>
+<div class="review_wrapper">
 
 <h3>Item Reviews</h3>
 <br>
   <% @count = 0 %>
     <% @item.review.reverse_each do |c| %>
 
+  <div class="review_content">
       <p>
+      <%= c.hire.user.name %> <br>
       <%= radio_button_tag @count, 'true', c.reaction, disabled: true %>
       <%= label_tag @count, "Upvote"%>
       <%= radio_button_tag @count, 'false', !c.reaction, disabled: true %>
       <%= label_tag @count, "Downvote"%>
       </p>
+
       <% @count += 1 %>
       <h5> <%= c.content %></h5>
+  </div>
     <br>
     <br>
     <% end %>
 
-  <h1><%= @item.name %></h1>
 
-  <% @item.hires.each do |hire| %>
-      <% if hire.hired == true %>
-
-          <h4> Item is unavailable</h4>
-      <% end %>
-  <% end %>
+</div>
