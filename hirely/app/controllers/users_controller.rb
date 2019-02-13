@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       log_in @user
       # flash[:sucess] = ["Welcome to Hirely #{@user.first_name.capitalize}"]
       redirect_to menu_path, info: "Welcome to Hirely #{@user.first_name.capitalize}"
->>>>>>> master
+
     else
       # flash[:error] = ['Something went wrong, try again']
       redirect_to new_user_path, danger: "Something went wrong, please try again"

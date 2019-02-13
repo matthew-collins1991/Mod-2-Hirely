@@ -35,12 +35,6 @@ module SessionsHelper
      end
    end
 
-   def authorized_for(target_user_id)
-     if current_user.id != target_user_id.to_i && current_user.admin != true
-       # flash[:error] = ["You cannot view a page that does not belong to you!"]
-       redirect_to items_path, danger: 'You cannot view a page that does not belong to you!'
-     end
-   end
 
   def authorized_for(target_user_id)
     if current_user.id != target_user_id.to_i

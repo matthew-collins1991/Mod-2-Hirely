@@ -24,10 +24,19 @@ class Item < ApplicationRecord
    ItemReview.select{|x| x.hire.item.id == self.id}
  end
 
- def google_map(center)
-  "https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=300x300&zoom=17"
+
+def positive_review
+self.review.select{|x| x.reaction == true}.length
 end
 
+def total_review
+  self.review.length
+end
 
+def overall_score
+  score = positive_review.to_f / total_review.to_f
+  x = score*100
+  return x
+end
 
 end

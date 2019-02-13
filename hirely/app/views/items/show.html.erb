@@ -43,13 +43,15 @@ distance: <%= Google::Maps.distance("#{@item.user.location}", "#{current_user.lo
 
   <h5>Category:<%= @item.catagory %></h5>
 
-  <h5>Location:<%= @item.user.location %></h5>
+  <h5>Location:<% @item.user.location %></h5>
   <iframe width="400" height="400" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA&q='<%=@item.user.location%>'"
  allowfullscreen>
 </iframe>
 
 
+<br>
+<br>
 
 
 
@@ -58,17 +60,17 @@ distance: <%= Google::Maps.distance("#{@item.user.location}", "#{current_user.lo
 <p>No reviews for this item yet!</p>
 <% else %>
 <br>
-  <% @count = 0 %>
-
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: <%=@item.overall_score%>%" aria-valuenow="<%=@item.overall_score%>" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+    <p><%= "#{@item.overall_score}%" %> positve reviews</p>
     <% @item.review.reverse_each do |c| %>
-
-      <p>
-      <%= radio_button_tag @count, 'true', c.reaction, disabled: true %>
-      <%= label_tag @count, "Upvote"%>
-      <%= radio_button_tag @count, 'false', !c.reaction, disabled: true %>
-      <%= label_tag @count, "Downvote"%>
-      </p>
-      <% @count += 1 %>
+    <p>Review written by <%=c.hire.user.name%>  <%=time_ago_in_words(c.created_at)%> ago</p>
+        <% if c.reaction %>
+        <%= image_tag "like.png", size: "50" %>
+        <% else %>
+        <%= image_tag "dislike.png", size: "50" %>
+        <% end %>
       <h5> <%= c.content %></h5>
     <br>
     <br>
