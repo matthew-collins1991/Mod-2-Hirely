@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_users, only: [:new, :edit, :create, :update]
 
   def index
-    @items = Item.search(params[:search])
+    @items = Item.search(params['search_name'], params['search_category'])
   end
 
   def show

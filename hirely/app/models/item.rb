@@ -11,10 +11,11 @@ class Item < ApplicationRecord
 
 
 
- def self.search(search)
-   key = "%#{search}%"
-   if search
-     self.where("name LIKE :search OR catagory LIKE :search", search: key )
+ def self.search(search_name = '', search_category = '')
+   key_name = "%#{search_name}%"
+   key_category = "%#{search_category}%"
+   if search_name || search_category
+     self.where("name LIKE :search_name AND catagory LIKE :search_category", search_name: key_name, search_category: key_category )
    else
     self.all
    end
