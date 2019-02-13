@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
+      flash[:sucess] = ['Welcome to Hirely #{@user.name}']
       redirect_to menu_path
     else
       flash[:errors] = ['something went wrong, try again']
@@ -31,8 +32,16 @@ class UsersController < ApplicationController
     end
 
     def update
+
       @user.update(user_params)
+      if @user.save
+          flash[:sucess] = ["#{@user.first_name.capitalize} your profile has sucessfully been updated"]
         redirect_to @user
+      else
+        flash[:errors] = ['update unsucessful']
+        render :edit
+
+      end
     end
 
     # def destroy

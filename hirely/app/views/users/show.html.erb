@@ -1,4 +1,17 @@
 
+
+
+   <% if flash[:sucess] %>
+        <% flash[:sucess].each do |e|  %>
+
+        <div class="alert alert-success" role="alert">
+            <p> <%= e %> </p>
+       </div>
+
+        <% end %>
+      <% end  %>
+
+
 <%= button_to 'Log out', logout_path, method: :delete, class: "btn-sm btn-info"%>
 <br>
  <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn-sm btn-info"%>
