@@ -1,6 +1,6 @@
 
 <!-- only allow hire item if current user does not own item -->
-<% unless @item.user_id == current_user.id %>
+<% unless @item.user_id == current_user.id || @item.hires.last.hired == true%>
   <%= button_to 'Hire',
    {:controller => "hires",
     :action => "create",
