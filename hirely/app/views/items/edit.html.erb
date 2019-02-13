@@ -1,7 +1,7 @@
+
+
+<%= button_to 'Delete item', item_path(@item), method: :delete, class: "btn-sm btn-info"%>
+
 <h2> Edit Item </h2>
 
 <%= render 'form' %>
-
-<%= form_tag "/items/#{@item.id}", method: 'delete' do %>
-  <%= submit_tag 'Delete Item' %>
-<% end %>
