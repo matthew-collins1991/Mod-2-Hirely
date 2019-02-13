@@ -10,6 +10,12 @@
     :method=>:post  %>
 <% end %>
 
+<%  if @item.user.id  == current_user.id %>
+
+  <%= button_to 'Edit', edit_item_path(@item), method: :get, class: "btn-sm btn-info"%>
+
+<% end %>
+
 <% @item.hires.each do |hire| %>
     <% if hire.hired == true %>
     <h4> Item is unavailable</h4>
@@ -21,9 +27,22 @@
 <h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
 
 <!-- only allow edit item if current user owns item -->
-<% if @item.user_id == current_user.id %>
-  <%= link_to 'edit me', edit_item_path(@item) %>
-<% end %>
+
+  <div style="width:300px; height:auto">
+        <%= image_tag(@item.image, style:'width:100%') %>
+  </div>
+
+  <h4>Price: £<%= @item.price %> per/day</h4>
+
+  <h4>Item owner: <%=link_to @item.user.name, user_path(@item.user.id) %></h4>
+
+  <h5>Category:<%= @item.catagory %></h5>
+
+  <h5>Location:<%= @item.user.location %></h5>
+
+  <h6><%= @item.description %></h6>
+
+
 
 <h3>Item Reviews</h3>
 <br>
@@ -42,4 +61,11 @@
     <br>
     <% end %>
 
-<%= link_to "All items", items_path %>
+  <h1><%= @item.name %></h1>
+
+  <% @item.hires.each do |hire| %>
+      <% if hire.hired == true %>
+
+          <h4> Item is unavailable</h4>
+      <% end %>
+  <% end %>

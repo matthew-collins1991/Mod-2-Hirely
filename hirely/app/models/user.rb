@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :item
   has_many :hires
   has_many :item_reviews, through: :hires
+  has_one_attached :profile_pic
 
 #-----------------------validations---------------------------
   before_save { self.email = email.downcase }

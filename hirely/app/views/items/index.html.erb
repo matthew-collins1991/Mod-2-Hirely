@@ -9,11 +9,12 @@
 
 
 
+
   <% @items.each do |item| %>
 
       <div class="card-deck">
         <div class="card">
-
+         <img src="" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <%= link_to 'View', item, class:"btn btn-primary"%>

@@ -1,5 +1,31 @@
-<h1><%= @user.name %></h1>
 
+
+
+   <% if flash[:sucess] %>
+        <% flash[:sucess].each do |e|  %>
+
+        <div class="alert alert-success" role="alert">
+            <p> <%= e %> </p>
+       </div>
+
+        <% end %>
+      <% end  %>
+
+
+<%= button_to 'Log out', logout_path, method: :delete, class: "btn-sm btn-info"%>
+<br>
+ <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn-sm btn-info"%>
+
+
+ <div style="width:300px; height:auto">
+       <%= image_tag(@user.profile_pic, style:'width:100%') %>
+ </div>
+
+
+
+<h1><%= @user.name.capitalize %></h1>
+
+<br>
 <h2>All My Items</h2>
 
 <% @user.item.each do |item|%>
@@ -36,6 +62,5 @@
 <br>
 <%= link_to "Add New Item", new_item_path %>
 <br>
-<%= link_to "All Items", items_path %>
-<br>
-<%= link_to "Log out", logout_path, method: :delete %>
+
+<h4>Hired history</h4>

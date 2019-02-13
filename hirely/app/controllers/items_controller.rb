@@ -10,19 +10,23 @@ class ItemsController < ApplicationController
   end
 
   def new
+
     @item = Item.new
   end
 
   def create
+
     @item = Item.create(item_params)
     redirect_to @item
   end
 
   def edit
+
     # byebug
   end
 
   def update
+
     @item.update(item_params)
     redirect_to @item
   end
@@ -36,7 +40,7 @@ class ItemsController < ApplicationController
 
   def item_params
 
-    params.require(:item).permit(:name, :price, :description, :catagory, :search).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :price, :description, :catagory, :search, :image).merge(user_id: current_user.id)
   end
 
   def find_item
