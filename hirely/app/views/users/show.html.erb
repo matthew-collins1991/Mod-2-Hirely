@@ -1,17 +1,5 @@
 
 
-
-   <% if flash[:sucess] %>
-        <% flash[:sucess].each do |e|  %>
-
-        <div class="alert alert-success" role="alert">
-            <p> <%= e %> </p>
-       </div>
-
-        <% end %>
-      <% end  %>
-
-
 <%= button_to 'Log out', logout_path, method: :delete, class: "btn-sm btn-info"%>
 <br>
  <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn-sm btn-info"%>
@@ -32,7 +20,9 @@
 
 <div class="card-deck">
   <div class="card">
-
+    <div style="width:300px; height:auto">
+          <%= image_tag(item.image, style:'width:100%') %>
+    </div>
     <div class="card-body">
       <h5 class="card-title"><%= item.name %></h5>
     <%= link_to 'View', item_path(item), class:"btn btn-primary" %>
