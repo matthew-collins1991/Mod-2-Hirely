@@ -4,6 +4,7 @@ module SessionsHelper
     # Logs in the given user.
     def log_in(user)
       session[:user_id] = user.id
+      # flash[:sucess] = ["Welcome back #{user.first_name}"]
     end
 
     # Returns the current logged-in user (if any).
@@ -27,18 +28,19 @@ module SessionsHelper
 
   end
 
-  def authorized?
-    if !logged_in?
-      flash[:errors] = ["you are not logged in"]
-      redirect_to login_path and return  # double redirect safeguard
-    end
-  end
+    def authorized?
+     if !logged_in?
+       # flash[:error] = ["you are not logged in"]
+       redirect_to login_path, danger: 'You are not logged in' and return  # double redirect safeguard
+     end
+   end
 
-  def authorized_for(target_user_id)
-    if current_user.id != target_user_id.to_i && current_user.admin != true
-      flash[:errors] = ["You cannot view a page that does not belong to you!"]
-      redirect_to trains_path
-    end
-  end
+   def authorized_for(target_user_id)
+     if current_user.id != target_user_id.to_i && current_user.admin != true
+       # flash[:error] = ["You cannot view a page that does not belong to you!"]
+       redirect_to items_path, danger: 'You cannot view a page that does not belong to you!'
+     end
+   end
+
 
 end

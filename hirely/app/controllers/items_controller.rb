@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.create(item_params)
-    redirect_to @item
+    redirect_to @item, success: "Your new item has been create"
   end
 
   def edit
@@ -28,12 +28,12 @@ class ItemsController < ApplicationController
   def update
 
     @item.update(item_params)
-    redirect_to @item
+    redirect_to @item, info: "Your item has been update"
   end
 
   def destroy
     @item.destroy
-    redirect_to items_path
+    redirect_to items_path, info: "Your item has been deleted"
   end
 
   private

@@ -17,18 +17,13 @@
   <%= f.text_field :description, class:"form-control" , placeholder:"Item description" %>
 </div>
 
+
 <!-- need to make this a data select type -->
 <div class="form-group">
-  <%= f.label :catagory%>
-  <%= f.text_field :catagory, list: 'catagory-name', class:"form-control" , placeholder:"Item category type" %>
+  <%= f.label :catagory%><br>
+  <%= f.select :catagory, ['Beauty','Garden','Home','Kitchen','Car'],  class:"form-control" %>
 
-   <datalist id="catagory-name">
-       <% Item.all.each do |item| %>
-           <option value="<%= item.catagory %>">
-       <% end %>
-   </datalist>
 </div>
-
 
 
 <div class="form-group">
@@ -39,7 +34,7 @@
 
 <!-- add and image  -->
 <div class="form-group">
-  <%= f.label :image %>
+  <%= f.label :image %><br>
   <%= f.file_field :image %>
 </div>
 
