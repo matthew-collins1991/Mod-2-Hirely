@@ -20,6 +20,10 @@ class Item < ApplicationRecord
    end
  end
 
+ def distance
+   Google::Maps.distance("#{self.user.location}", "#{current_user.location}")
+ end
+
  def review
    ItemReview.select{|x| x.hire.item.id == self.id}
  end
