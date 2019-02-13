@@ -1,6 +1,6 @@
 
 <!-- only allow hire item if current user does not own item -->
-<% unless @item.user_id == current_user.id || @item.hires.last.hired == true%>
+<% unless @item.user_id == current_user.id %>
   <%= button_to 'Hire',
    {:controller => "hires",
     :action => "create",
@@ -24,7 +24,8 @@
 
 <!-- Show who the item belongs to with a link to their profile -->
 <h1><%= @item.name %></h1>
-<h3>This item belongs to <%=link_to @item.user.name, user_path(@item.user.id) %></h3>
+<h6><%= @item.description %></h6>
+
 
 <!-- Show how far away item is unless current user owns item -->
 <% unless @item.user_id == current_user.id %>
@@ -43,14 +44,22 @@ distance: <%= Google::Maps.distance("#{@item.user.location}", "#{current_user.lo
   <h5>Category:<%= @item.catagory %></h5>
 
   <h5>Location:<%= @item.user.location %></h5>
+  <iframe width="400" height="400" frameborder="0" style="border:0"
+ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA&q='<%=@item.user.location%>'"
+ allowfullscreen>
+</iframe>
 
-  <h6><%= @item.description %></h6>
+
 
 
 
 <h3>Item Reviews</h3>
+<%  if @item.review.length == 0 %>
+<p>No reviews for this item yet!</p>
+<% else %>
 <br>
   <% @count = 0 %>
+
     <% @item.review.reverse_each do |c| %>
 
       <p>
@@ -64,12 +73,11 @@ distance: <%= Google::Maps.distance("#{@item.user.location}", "#{current_user.lo
     <br>
     <br>
     <% end %>
-
-  <h1><%= @item.name %></h1>
+    <% end %>
 
   <% @item.hires.each do |hire| %>
       <% if hire.hired == true %>
 
-          <h4> Item is unavailable</h4>
+          <h4> Item is currently unavailable</h4>
       <% end %>
   <% end %>

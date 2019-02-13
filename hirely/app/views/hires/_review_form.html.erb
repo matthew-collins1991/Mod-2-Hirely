@@ -4,10 +4,27 @@
       <%= hidden_field_tag :hire_id %>
       <%= hidden_field_tag :hire_id, "#{@hire.id}" %>
     <br>
-      <%= radio_button_tag :reaction, true, :checked => true %>
-      <%= label_tag :reaction, "Upvote", :value => true%>
-      <%= radio_button_tag :reaction, false %>
-      <%= label_tag :reaction, "Downvote", :value => false%>
+    <!--RADIO 1-->
+    <style media="screen">
+      .radio_item{
+display: none !important;
+}
+
+.label_item {
+opacity: 0.1;
+}
+
+.radio_item:checked + label {
+opacity: 1;
+}
+    </style>
+    <input type="radio" class="radio_item" value="true" name="reaction" id="radio1">
+    <label class="label_item" for="radio1"> <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/emoji-one/104/thumbs-up-sign_1f44d.png"> </label>
+
+    <!--RADIO 2-->
+    <input type="radio" class="radio_item" value="false" name="reaction" id="radio2">
+    <label class="label_item" for="radio2"> <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-down.png"> </label>
+
     <br>
 
 

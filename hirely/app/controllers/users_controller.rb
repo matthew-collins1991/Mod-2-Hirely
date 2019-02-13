@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [ :show,:edit, :update]
   before_action :find_items, only: [:new, :show, :create, :edit, :update]
-
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
 
     def show
+      authorized_for(params[:id])
     end
 
     def new
@@ -12,12 +13,9 @@ class UsersController < ApplicationController
     end
 
     def create
-
     @user = User.new(user_params)
-
-
     if @user.save
-      log_in @user
+      session[:user_id] = @user.id
       flash[:sucess] = ['Welcome to Hirely #{@user.name}']
       redirect_to menu_path
     else
@@ -64,5 +62,9 @@ class UsersController < ApplicationController
 
     def find_items
       @items = Item.all
+    end
+
+    def require_login
+      authorized?
     end
   end

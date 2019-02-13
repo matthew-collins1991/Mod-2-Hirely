@@ -1,5 +1,6 @@
 class HiresController < ApplicationController
-before_action :find_hire, only: [:update]
+  before_action :find_hire, only: [:update]
+  before_action :require_login, only: [:show, :new, :create, :update]
 
   def show
     @hire = Hire.find(params[:id])
@@ -36,6 +37,9 @@ before_action :find_hire, only: [:update]
     @hire = Hire.find(params[:id])
   end
 
+  def require_login
+    authorized?
+  end
 
 
 

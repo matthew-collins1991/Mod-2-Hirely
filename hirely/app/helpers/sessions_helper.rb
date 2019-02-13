@@ -35,9 +35,9 @@ module SessionsHelper
   end
 
   def authorized_for(target_user_id)
-    if current_user.id != target_user_id.to_i && current_user.admin != true
+    if current_user.id != target_user_id.to_i
       flash[:errors] = ["You cannot view a page that does not belong to you!"]
-      redirect_to trains_path
+      redirect_to items_path
     end
   end
 

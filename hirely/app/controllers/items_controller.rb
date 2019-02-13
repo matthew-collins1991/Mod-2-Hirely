@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:edit, :show, :update, :destroy]
   before_action :find_users, only: [:new, :edit, :create, :update]
+  before_action :require_login, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
     @items = Item.search(params[:search])
@@ -21,12 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
-    # byebug
   end
 
   def update
-
     @item.update(item_params)
     redirect_to @item
   end
@@ -49,5 +47,9 @@ class ItemsController < ApplicationController
 
   def find_users
     @users = User.all
+  end
+
+  def require_login
+    authorized?
   end
 end
