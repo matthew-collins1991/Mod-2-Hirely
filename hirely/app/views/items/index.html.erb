@@ -1,20 +1,44 @@
+
+<!-- turn into button --->
+<%= link_to 'create a new Item', new_item_path %>
+
 <h1>All Items</h1>
 
 
-<h4>Search by name</h4>
-<%= form_tag(items_path, method: :get) do %>
-<%= text_field_tag(:search, params[:search]) %>
+<div class="filter_wrapper">
+
+
+<%= form_tag items_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder:"search by name" %>
 <%= submit_tag "Search" %>
 <% end %>
 
 
+<%= form_tag items_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder:"search by category" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+
+<!-- Search by category or by location --->
+
+
+
+</div>
+
+
+<br>
 
 
   <% @items.each do |item| %>
 
       <div class="card-deck">
         <div class="card">
-         <img src="" class="card-img-top" alt="...">
+
+          <div style="width:300px; height:auto">
+                <%= image_tag(item.image, style:'width:100%') %>
+          </div>
+
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <%= link_to 'View', item, class:"btn btn-primary"%>

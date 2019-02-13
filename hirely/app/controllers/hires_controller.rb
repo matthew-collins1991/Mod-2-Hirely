@@ -15,9 +15,13 @@ class HiresController < ApplicationController
     # @hire.user_id = current_user.id
       if @hire.valid?
         @hire.save
-        redirect_to @hire
+
+        redirect_to @hire, info: "You have hired #{@hire.item.name}"
+
       else
-        render :new
+        
+        redirect_to new_hire_path, danger: "Something went wrong with your hire, please try again"
+
       end
   end
 

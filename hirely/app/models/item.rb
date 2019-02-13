@@ -10,19 +10,14 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
 
-  def self.search(search)
 
-     if search
-       item = Item.find_by(name: search)
-         if item
-             self.where(name: item)
-         else
-           Item.all
-         end
-     else
-       Item.all
-
-     end
+ def self.search(search)
+   key = "%#{search}%"
+   if search
+     self.where("name LIKE :search OR catagory LIKE :search", search: key )
+   else
+    self.all
+   end
  end
 
  def review

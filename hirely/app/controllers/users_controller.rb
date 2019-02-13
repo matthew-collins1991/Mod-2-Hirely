@@ -15,12 +15,14 @@ class UsersController < ApplicationController
     def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      flash[:sucess] = ['Welcome to Hirely #{@user.name}']
-      redirect_to menu_path
+
+      log_in @user
+      # flash[:sucess] = ["Welcome to Hirely #{@user.first_name.capitalize}"]
+      redirect_to menu_path, info: "Welcome to Hirely #{@user.first_name.capitalize}"
+>>>>>>> master
     else
-      flash[:errors] = ['something went wrong, try again']
-      render 'new'
+      # flash[:error] = ['Something went wrong, try again']
+      redirect_to new_user_path, danger: "Something went wrong, please try again"
     end
   end
 
@@ -33,11 +35,12 @@ class UsersController < ApplicationController
 
       @user.update(user_params)
       if @user.save
-          flash[:sucess] = ["#{@user.first_name.capitalize} your profile has sucessfully been updated"]
-        redirect_to @user
+          # flash[:sucess] = ["#{@user.first_name.capitalize} your profile has sucessfully been updated"]
+        redirect_to @user, success: "#{@user.first_name.capitalize} your profile has sucessfully been updated"
       else
-        flash[:errors] = ['update unsucessful']
-        render :edit
+        # flash[:error] = ["update unsucessful"]
+
+        redirect_to edit_user_path(@user), danger: "Update unsuccessful"
 
       end
     end
