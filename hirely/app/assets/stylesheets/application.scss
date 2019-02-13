@@ -21,3 +21,51 @@
  @import "item_reviews";
  @import "items";
  @import "users";
+
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+  // background: #f1c40f;
+}
+
+.sing_up_or_login{
+
+      background: #9dcedd;
+      border-radius: 12px;
+
+}
+
+.menu_button{
+
+
+
+  background-color: #4aa4b9;
+  background-image: linear-gradient(to right, #7F7FD5, #86A8E7 ,#91EAE4);
+  border: none;
+  color: white;
+  padding: 80px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 12px;
+  width: 25%;
+  float: left;
+  margin: 10px 10px;
+
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // margin-bottom: 2rem;
+
+
+}
+
+.menu_button:hover {
+
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+
+}

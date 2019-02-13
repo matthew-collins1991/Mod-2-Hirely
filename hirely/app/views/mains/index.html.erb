@@ -1,5 +1,10 @@
 <!--This is the home page-->
 
-<%= link_to "Sign Up", new_user_path, type:"button", class:"btn btn-outline-primary btn-lg" %>
+<div class="sing_up_or_login">
 
-<%= link_to "Log In", login_path, type:"button", class:"btn btn-outline-primary btn-lg" %>
+
+<%= button_to 'Sign Up', new_user_path, method: :get, class:"menu_button"%>
+
+<%= button_to 'Log In', login_path, method: :get, class:"menu_button"%>
+
+</div>
