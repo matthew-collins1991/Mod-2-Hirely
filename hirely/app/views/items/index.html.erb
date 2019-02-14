@@ -29,20 +29,23 @@
 
 <div class="item-cards">
 
-
+  <section class="card-container">
 
   <% @items.each do |item| %>
 
 
 
 
-  <section class="card-container">
+
       <article class="card">
           <figure class="card__thumbnail">
-          <%= image_tag(item.image) %>
+          <%= image_tag(item.image,style:"width:100%", class:"card_img")%>
             </figure>
+
+
+
           <header class="card__title">
-              <h3><%= item.name %></h3>
+              <h3 class="card_heading"><%= item.name.capitalize %></h3>
           </header>
 
           <main class="card__description">
@@ -50,9 +53,12 @@
             distance: <%= Google::Maps.distance("#{item.user.location}", "#{current_user.location}") %>
             <% end %>
           </main>
+          <div class="middle">
+
         <%= button_to 'View Item', item, method: :get, class:"view_button"%>
+        </div>
       </article>
-  </section>
+
 
 
 
@@ -60,7 +66,7 @@
 
   <% end %>
 
-
+</section>
 
 </div>
 </div>

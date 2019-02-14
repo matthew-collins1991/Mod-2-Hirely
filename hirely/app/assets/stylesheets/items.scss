@@ -47,7 +47,7 @@ display: flex;
 .filter_wrapper{
 
   font-family: 'Playfair Display', serif;
-  background: white;
+  background: #f4f0ec;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -60,22 +60,99 @@ margin-left: 10px;
 
 }
 
+//card grid div
 .item-cards{
-background: white;
-border-radius: 10px;
-  font-family: 'Playfair Display', serif;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// background: white;
+// border-radius: 10px;
+//   font-family: 'Playfair Display', serif;
+//     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-container{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+grid-gap: 1.5rem;
+
 }
 
 .card {
     box-shadow: 0px 1px 5px #555;
-    background-color: white;
+    background-color: #D0E5DC;
+    border-radius: 10px;
+
+//     transition: .5s ease;
+// opacity: 0;
+// position: absolute;
+// top: 50%;
+// left: 50%;
+// transform: translate(-50%, -50%);
+// -ms-transform: translate(-50%, -50%)
+
 }
 .card__title {
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    padding: .5rem;
+    text-align:center;
+    padding: .2rem;
+
 }
+
+.card_heading{
+
+  font-family: 'Playfair Display', serif;
+}
+
+
 .card__description {
-    padding: .5rem;
+    font-family: 'Playfair Display', serif;
+    padding: .2rem;
+    text-align: center;
     line-height: 1.6em;
+}
+
+.view_button{
+
+    font-family: 'Playfair Display', serif;
+    // color: white;
+    display: block;
+    background-color: #acc9c7;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 80px;
+    text-align: center;
+    margin: auto;
+    transition: .3s ease-out;
+    &:hover {
+        background-color: darken(#EFE0D2, 10%);
+    }
+
+}
+
+.card_img{
+    opacity: 1;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.card:hover .card_img {
+  opacity: 0.3;
+}
+
+.card:hover .middle {
+  opacity: 1;
 }
