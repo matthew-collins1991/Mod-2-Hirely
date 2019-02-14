@@ -1,109 +1,121 @@
-
-
-<!-- only allow edit item if current user owns item -->
-<%  if @item.user.id  == current_user.id %>
-  <%= button_to 'Edit', edit_item_path(@item), method: :get, class: "btn-sm btn-info"%>
-<% end %>
-
-<div class="container">
-  <div class="row">
-  <div class="col-12">
-    <!-- Show who the item belongs to with a link to their profile -->
-    <h1><%= @item.name %>
-      <br>
-      <small class="text-muted"><%= @item.description %></small></h1>
-
-  </div>
-  </div>
-</div>
-
- <div class="container">
-   <div class="row">
-     <div class="col-6">
-       <div style="width:100%; height:auto">
-             <%= image_tag(@item.image, style:'width:100%') %>
-       </div>
-     </div>
-     <div class="col-6">
-       <dl class="row">
-         <dt class="col-sm-3">Price</dt>
-         <dd class="col-sm-9">£<%= @item.price %> per/day</dd>
-         <dt class="col-sm-3">Item Owner</dt>
-         <dd class="col-sm-9"><%=link_to @item.user.name, user_path(@item.user.id) %></dd>
-         <dt class="col-sm-3">Catagory</dt>
-         <dd class="col-sm-9"><%= @item.catagory %></dd>
-         <% unless @item.user_id == current_user.id %>
-         <dt class="col-sm-3">Distance</dt>
-         <dd class="col-sm-9"><%= Google::Maps.distance("#{@item.user.location}", "#{current_user.location}") %></dd>
-          <% end %>
-
-       <% unless @item.user_id == current_user.id %>
-         <%= button_to 'Hire',
-          {:controller => "hires",
-           :action => "create",
-           :item_id => @item.id,
-           :user_id=> current_user.id,
-           :hired => 1} ,
-           :method=>:post, class: "btn btn-success btn-lg" %>
-       <% end %>
-
-       <% @item.hires.each do |hire| %>
-           <% if hire.hired == true %>
-           <h4> Item is unavailable</h4>
-           <% end %>
-       <% end %>
-     </div>
-   </div>
-
- </div>
- <br>
-
-<div class="container">
-  <div class="row">
+<div class="box">
+  <div class="container">
+    <div class="row">
     <div class="col-12">
-      <h5>Location:<% @item.user.location %></h5>
-        <iframe width="100%" height="400" frameborder="0" style="border:0"
-       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA&q='<%=@item.user.location%>'"
-       allowfullscreen>
-        </iframe>
+      <!-- Show who the item belongs to with a link to their profile -->
+      <h1><%= @item.name %>
+        <br>
+        <small class="text-muted"><%= @item.description %></small></h1>
+
+    </div>
     </div>
   </div>
-</div>
 
-<br>
-<br>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h3>Item Reviews</h3>
-      <%  if @item.review.length == 0 %>
-      <p>No reviews for this item yet!</p>
-      <% else %>
-      <br>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: <%=@item.overall_score%>%" aria-valuenow="<%=@item.overall_score%>" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-          <p><%= "#{@item.overall_score}%" %> positve reviews</p>
-          <% @item.review.reverse_each do |c| %>
-          <p>Review written by <%=c.hire.user.name%>  <%=time_ago_in_words(c.created_at)%> ago</p>
-              <% if c.reaction %>
-              <%= image_tag "like.png", size: "50" %>
-              <% else %>
-              <%= image_tag "dislike.png", size: "50" %>
-              <% end %>
-            <h5> <%= c.content %></h5>
-          <br>
-          <br>
-          <% end %>
-          <% end %>
-
-        <% @item.hires.each do |hire| %>
-            <% if hire.hired == true %>
-
-                <h4> Item is currently unavailable</h4>
+   <div class="container">
+     <div class="row">
+       <div class="col-6">
+         <div style="width:100%; height:auto" class="img">
+               <%= image_tag(@item.image, style:'width:100%; border-radius:10px') %>
+         </div>
+       </div>
+       <div class="col-6">
+         <dl class="row">
+           <dt class="col-sm-4">Price</dt>
+           <dd class="col-sm-8">£<%= @item.price %> per/day</dd>
+           <dt class="col-sm-4">Item Owner</dt>
+           <dd class="col-sm-8"><%=link_to @item.user.name, user_path(@item.user.id) %></dd>
+           <dt class="col-sm-4">Catagory</dt>
+           <dd class="col-sm-8"><%= @item.catagory %></dd>
+           <% unless @item.user_id == current_user.id %>
+           <dt class="col-sm-4">Distance</dt>
+           <dd class="col-sm-8"><%= Google::Maps.distance("#{@item.user.location}", "#{current_user.location}") %></dd>
             <% end %>
+            </dl>
+
+          <div class="hire-opt">
+         <% unless @item.user_id == current_user.id || (@item.hires.length > 0 && @item.hires.last.hired == true)%>
+           <%= button_to 'Hire',
+            {:controller => "hires",
+             :action => "create",
+             :item_id => @item.id,
+             :user_id=> current_user.id,
+             :hired => 1} ,
+             :method=>:post, class: "btn btn-success btn-lg" %>
+         <% end %>
+
+         <% @item.hires.each do |hire| %>
+             <% if hire.hired == true %>
+             <h4> Item is unavailable</h4>
+          <% end %>
+         <% end %>
+         <%  if @item.user.id  == current_user.id %>
+           <%= button_to 'Edit', edit_item_path(@item), method: :get, class: "btn btn-success btn-lg"%>
+         <% end %>
+         </div>
+       </div>
+     </div>
+
+   </div>
+   <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5>Location:<% @item.user.location %></h5>
+          <iframe width="100%" height="400" frameborder="0" style="webkit-border-radius:20px;"
+         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA&q='<%=@item.user.location%>'"
+         allowfullscreen>
+          </iframe>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3>Item Reviews</h3>
+        <%  if @item.review.length == 0 %>
+        <p>No reviews for this item yet!</p>
+        <% else %>
+
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: <%=@item.overall_score%>%" aria-valuenow="<%=@item.overall_score%>" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+            <p><%= "#{@item.overall_score}%" %> positve reviews</p>
+            <br>
+
+
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Reaction</th>
+                  <th scope="col">Review</th>
+                  <th scope="col">User</th>
+                </tr>
+              </thead>
+              <% @item.review.reverse_each do |c| %>
+              <tbody class= "table-row">
+                <tr>
+                  <td>
+                      <% if c.reaction %>
+                        <%= image_tag "like.png", size: "50" %>
+                        <% else %>
+                        <%= image_tag "dislike.png", size: "50" %>
+                      <% end %>
+                    </td>
+                  <td><%= c.content %></td>
+                  <td>Review written by <%=c.hire.user.name%>  <%=time_ago_in_words(c.created_at)%> ago</td>
+                  <% end %>
+                </tr>
+              </tbody>
+            </table>
+
         <% end %>
+      </div>
     </div>
   </div>
 </div>
