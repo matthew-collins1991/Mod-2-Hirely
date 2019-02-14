@@ -1,15 +1,19 @@
 <div class="container main-content item-index">
 
-<h1>All Items</h1>
 
+<h1 class="title">All Items</h1>
+
+<br>
 
 <div class="filter_wrapper">
 
 
+
 <%= form_tag items_path, method: :get do %>
-<%= text_field_tag :search_name, params[:search_name], placeholder:"search by name" %>
+<%= text_field_tag :search_name, params[:search_name], placeholder:"search by name", class:"search"%>
 <%= submit_tag "Search" %>
-<%= text_field_tag :search_category, params[:search_category], placeholder:"search by category" %>
+
+<%= text_field_tag :search_category, params[:search_category], placeholder:"search by category", class:"search" %>
 <%= submit_tag "Search" %>
 <% end %>
 
@@ -23,34 +27,40 @@
 
 <br>
 
-  <div class="card-columns">
+<div class="item-cards">
+
 
 
   <% @items.each do |item| %>
 
 
 
-      <div class="card text-center">
-        <div style="width:300px; height:auto">
-              <%= image_tag(item.image, style:'width:100%') %>
-        </div>
-              <div class="card-body">
-              <h5 class="card-text"><%= item.name %></h5>
 
-              </div>
-              <% unless item.user_id == current_user.id %>
-              distance: <%= Google::Maps.distance("#{item.user.location}", "#{current_user.location}") %>
-              <% end %>
+  <section class="card-container">
+      <article class="card">
+          <figure class="card__thumbnail">
+          <%= image_tag(item.image) %>
+            </figure>
+          <header class="card__title">
+              <h3><%= item.name %></h3>
+          </header>
 
-              <div class="card-footer text-muted">
-                  <%= link_to 'View', item, class:"btn btn-primary"%>
-              </div>
-          </div>
+          <main class="card__description">
+            <% unless item.user_id == current_user.id %>
+            distance: <%= Google::Maps.distance("#{item.user.location}", "#{current_user.location}") %>
+            <% end %>
+          </main>
+        <%= button_to 'View Item', item, method: :get, class:"view_button"%>
+      </article>
+  </section>
+
 
 
 
 
   <% end %>
 
-    </div>
+
+
+</div>
 </div>

@@ -2,10 +2,13 @@
 
 
 
+<div class="login_form">
+
 
 
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
+
+<h1 class="title">Log in</h1>
 
 
     <%= form_for(:session, url: login_path) do |f| %>
@@ -20,9 +23,19 @@
       <%= f.password_field :password, class:"form-control" , placeholder:"Enter email address" %>
 </div>
 
-      <%= f.submit "Log in" %>
+<br>
+
+<div class="form_button_wrapper">
+
+      <%= f.submit "Log in", class:"form_button"%>
+</div>
+
     <% end %>
+
+    <br>
 
     <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
   </div>
+</div>
+
 </div>

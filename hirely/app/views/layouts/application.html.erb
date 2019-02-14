@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,14 +14,19 @@
   <body>
 
 
-    <nav class="navbar navbar-light" style="background-color: #acc9c7;">
+    <nav class="navbar navbar-light">
 
   <% if current_user.present? %>
+
+<div class="logo_wrapper">
+
 
     <%= link_to "Hirely", menu_path, class:"navbar-brand" %>
   <% else %>
     <%= link_to "Hirely", root_path, class:"navbar-brand" %>
   <% end  %>
+
+</div>
 
           <ul class="nav justify-content-end">
 
@@ -51,7 +57,7 @@
 
 
 
-        <div class="container">
+        <div class="container body_wrapper">
 
           <%= render 'flash_messages' %>
           <%= yield %>

@@ -1,4 +1,13 @@
 
+<div class="item-form">
+
+
+  <h2 class="title">
+    Add Item
+  </h2>
+
+<br>
+
 <div class"forms">
 
 
@@ -20,7 +29,7 @@
 
 <!-- need to make this a data select type -->
 <div class="form-group">
-  <%= f.label :catagory%><br>
+  <%= f.label :catagory, 'Category'%><br>
   <%= f.select :catagory, ['Beauty','Garden','Home','Kitchen','Car'],  class:"form-control" %>
 
 </div>
@@ -38,10 +47,12 @@
   <%= f.file_field :image %>
 </div>
 
+<br>
 
-
-  <%= f.submit%>
+  <%= f.submit "Add Item", class:"form_button"%>
 
 <% end %>
 
-<div> 
+<div>
+
+</div>
