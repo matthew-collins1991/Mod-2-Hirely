@@ -5,10 +5,10 @@ class Item < ApplicationRecord
   has_many :item_reviews, through: :hires
   has_one_attached :image
 
+
   validates :name, presence: true
   validates :catagory, presence: true
   validates :price, presence: true
-
 
 
  def self.search(search_name = '', search_category = '')

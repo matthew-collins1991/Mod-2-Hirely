@@ -17,9 +17,14 @@ class ItemsController < ApplicationController
 
   def create
 
-    @item = Item.create(item_params)
-    redirect_to @item, success: "Your new item has been create"
+    @item = Item.new(item_params)
+
+    if  !!item_params[:image] && @item.save
+    redirect_to @item, success: "Your new item has been created"
+  else
+    redirect_to new_item_path, danger: "Something went wrong, please try again"
   end
+end
 
   def edit
   end

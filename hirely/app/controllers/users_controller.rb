@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     def create
     @user = User.new(user_params)
-    if @user.save
+    if !!user_params[:profile_pic] && @user.save
 
       log_in @user
       # flash[:sucess] = ["Welcome to Hirely #{@user.first_name.capitalize}"]
