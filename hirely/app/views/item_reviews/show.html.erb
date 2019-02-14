@@ -1,2 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+  <h2> Thank you for creating a review for the <%= @item_review.hire.item.name %></h2>
 
-<h2> Thank you for creating a review for <%= @item_review.hire.item.name %></h2>
+  <div class="col-3">
+    <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>

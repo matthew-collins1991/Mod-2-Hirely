@@ -41,7 +41,7 @@ end
 def overall_score
   score = positive_review.to_f / total_review.to_f
   x = score*100
-  return x
+  return x.round
 end
 
 end

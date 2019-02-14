@@ -8,11 +8,12 @@
 <%= render 'radio_controls' %>
 
     <br>
-
+<div class="form-group">
       <%= label_tag (:content)%>
     <br>
-      <%= text_area_tag (:content) %>
+      <%= text_area_tag :content, content = nil, class: "form-control", rows:"3" %>
+</div>
 
     <br>
-      <%= submit_tag ("Post Review") %>
+      <%= submit_tag ("Post Review"), class: "form_button" %>
 <% end %>
