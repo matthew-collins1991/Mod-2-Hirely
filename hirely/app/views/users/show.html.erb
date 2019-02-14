@@ -55,55 +55,60 @@
   </div>
 </div>
 
+<!-- add image grid -->
 
-<div class="container">
-  <div class="row">
-  <section class="card-container">
-<% @user.item.each do |item|%>
+<section class="profile_card-container">
 
-
-      <div class="col-12">
-
-        <div class="card-deck">
-          <div class="card">
-            <div class="card-body">
-
-              <div class="row">
-                  <div class="col-6">
-                    <div style="height:auto" class='img'>
-                          <%= image_tag(item.image, style:'width:100%; border-radius:10px') %>
-                    </div>
-                  </div>
+<% @user.item.each do |item| %>
 
 
-                <div class="col-6">
+
+
+
+    <article class="profile_card">
+        <figure class="profile_card__thumbnail" style="height:auto">
+        <%= image_tag(item.image,style:"width:50%", class:"profile_card_img")%>
+          </figure>
+
+
+
+        <header class="profile_card__title">
+            <h3 class="profile_card_heading"><%= item.name.capitalize %></h3>
+        </header>
+
+        <main class="profile_card__description">
                   <dl class="row">
-                    <dt class="col-sm-12"><h3><%= item.name.capitalize %></h3></dt>
-                    <dt class="col-sm-4">Price</dt>
-                    <dd class="col-sm-8">£<%= item.price %> per/day</dd>
-                    <dt class="col-sm-4">Item Owner</dt>
-                    <dd class="col-sm-8"><%=link_to item.user.name, user_path(item.user.id) %></dd>
-                    <dt class="col-sm-4">Catagory</dt>
-                    <dd class="col-sm-8"><%= item.catagory %></dd>
-                  </dl>
-                  <div class="profile_button_wrapper">
+                     <dt class="col-sm-4">Price:</dt>
+                     <dd class="col-sm-8">£<%= item.price %> per/day</dd>
+                     <dt class="col-sm-4">Item Owner:</dt>
+                     <dd class="col-sm-8"><%=link_to item.user.name, user_path(item.user.id) %></dd>
+                     <dt class="col-sm-4">Catagory:</dt>
+                     <dd class="col-sm-8"><%= item.catagory %></dd>
+                   </dl>
+        </main>
+
+        <div class="profile_button_wrapper">
 
 
-                  <%= button_to 'View', item_path(item), method: :get, class: "profile_button item_btn"%>
-                  <br>
-                  <%= button_to 'Edit', edit_item_path(item), method: :get, class: "profile_button item_btn"%>
+                     <%= button_to 'View', item_path(item), method: :get, class: "profile_button item_btn"%>
+                     <br>
+                     <%= button_to 'Edit', edit_item_path(item), method: :get, class: "profile_button item_btn"%>
 
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            <% end %>
-            </div>
+       </div>
 
-    </div>
+    </article>
+
+
+
+<% end %>
+
+</section>
+
+
+
+
+
+
   </div>
 
 <!-- end of items div -->
