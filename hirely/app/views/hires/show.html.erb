@@ -1,11 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+
+
+
+
 <% if @hire.hired == true %>
 
-<h4><%= @hire.user.name %> has hired <%= @hire.item.name %></h4>
+<h4>Congratulations! You have hired the <%= @hire.item.name %></h4>
+
+<div class="col-3">
+  <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+</div>
 
 <% else %>
 
-<h4><%= @hire.user.name %> has returned <%= @hire.item.name %></h4>
+<h4>Thank you for returning the <%= @hire.item.name %>. We hope you enjoyed using Hirely!</h4>
+<br>
+<div class="col-3">
+  <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+</div>
+
 <br>
 <h5>Would you like to write a review?</h5>
 <%= render 'review_form' %>
 <% end %>
+
+</div>
+</div>
+</div>
+  </div>

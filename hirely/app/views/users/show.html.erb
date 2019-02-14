@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
 <div class="box">
 
   <div class="container">
@@ -107,15 +111,24 @@
           <h5>error somewhere</h5>
         <% end %></td>
 
-        <td><%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "btn btn-success btn-lg"%></td>
+        <td><% if hire.hired == true && hire.user_id == @user.id%>
+          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "btn btn-success btn-lg"%>
+        <% else %>
+          <h5>item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
+          <% end %>
+        </td>
 
 
 
 
       </tr>
     </tbody>
+    <% end %>
   </table>
 
-<% end %>
 
+
+</div>
+</div>
+</div>
 </div>
