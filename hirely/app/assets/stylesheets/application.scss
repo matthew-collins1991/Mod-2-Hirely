@@ -17,3 +17,62 @@
 
 
  @import "bootstrap";
+ @import "hires";
+ @import "item_reviews";
+ @import "items";
+ @import "users";
+
+
+
+body {
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+   background-size: cover;
+
+}
+
+.sing_up_or_login{
+
+
+border-radius: 10px;
+background-color: white;
+ width: 800px;
+ height: 500px;
+ border: 10px solid #EFE0D2;
+ padding: 10px;
+ margin: 0px;
+
+}
+
+.menu_button{
+
+
+
+  background-color: #4aa4b9;
+  background-image: linear-gradient(to bottom,#D0E5DC, #CFE6E8);
+  border: none;
+  color: white;
+  padding: 80px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 12px;
+  width: 25%;
+  float: left;
+  margin: 10px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+
+}
+
+.menu_button:hover {
+
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+
+}

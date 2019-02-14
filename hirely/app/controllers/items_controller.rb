@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :require_login, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @items = Item.search(params[:search])
+    @items = Item.search(params['search_name'], params['search_category'])
   end
 
   def show

@@ -31,11 +31,12 @@
   </div>
 
 <% end %>
+<br>
 
-<h2>Hired history</h2>
+<h2>Hired history:</h2>
   <% @user.hired.reverse_each do |hire|%>
     <h4><%= link_to hire.item.name, item_path(hire.item.id) %></h4>
-    <h4>Hired on: <%= hire.created_at.strftime("%d-%b-%Y") %></h4>
+    <h5>Hired on: <%= hire.created_at.strftime("%d-%b-%Y") %></h5>
       <% if hire.hired == true && hire.user_id == @user.id%>
         <h5>Item Status: You are currently hiring this item.</h5>
         <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch  %>

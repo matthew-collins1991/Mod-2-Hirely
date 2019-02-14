@@ -6,7 +6,7 @@ before_action :find_item_review, only: [:show]
   end
 
   def create
-    
+
     @item_review = ItemReview.create(item_review_params)
     redirect_to @item_review
   end

@@ -16,10 +16,10 @@ class HiresController < ApplicationController
       if @hire.valid?
         @hire.save
 
-        redirect_to @hire, info: "You have hired #{@hire.item.name}"
+        redirect_to @hire, info: "Your hire was successful"
 
       else
-        
+
         redirect_to new_hire_path, danger: "Something went wrong with your hire, please try again"
 
       end
