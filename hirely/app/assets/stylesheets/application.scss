@@ -23,7 +23,10 @@
  @import "users";
 
 
+*{
+  font-family: 'Playfair Display', serif;
 
+}
 
  .navbar {
 
@@ -192,8 +195,10 @@ margin: auto;
 }
 
 .img{
-  background-color: #CFE6E8;
-  padding: 10px;
+  // background-color: #CFE6E8;
+  // background-color: #75736C;
+  background-color: #C6C4B8;
+  padding: 6px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
