@@ -134,6 +134,7 @@ grid-gap: 1.5rem;
     display: block;
     max-width: 100%;
     height: auto;
+    margin: auto;
     border-radius: 8px;
     transition: .5s ease;
     backface-visibility: hidden;
@@ -156,4 +157,32 @@ grid-gap: 1.5rem;
 
 .card:hover .middle {
   opacity: 1;
+}
+
+.item_title {
+
+font-family: 'Playfair Display', serif;
+
+}
+
+.col-sm-4 {
+font-size: 18px;
+}
+
+.col-sm-8{
+
+font-size: 18px;
+
+}
+
+.item_button {
+
+  // display: block;
+  background-color: #acc9c7;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 35px;
+  margin: auto;
 }

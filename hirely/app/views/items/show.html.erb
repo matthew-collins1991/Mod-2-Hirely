@@ -8,12 +8,12 @@
     <div class="row">
     <div class="col-12">
 
-      
-      <!-- Show who the item belongs to with a link to their profile -->
-      <h1><%= @item.name %>
-        <br>
-        <small class="text-muted"><%= @item.description %></small></h1>
 
+      <!-- Show who the item belongs to with a link to their profile -->
+      <h1 class="item_title"><%= @item.name.capitalize %></h1>
+
+      <h3>  <small class="text-muted"><%= @item.description.capitalize %></small> </h3>
+<br>
     </div>
     </div>
   </div>
@@ -26,18 +26,20 @@
          </div>
        </div>
        <div class="col-6">
+
          <dl class="row">
-           <dt class="col-sm-4">Price</dt>
+           <dt class="col-sm-4">Price:</dt>
            <dd class="col-sm-8">£<%= @item.price %> per/day</dd>
-           <dt class="col-sm-4">Item Owner</dt>
+           <dt class="col-sm-4">Item Owner:</dt>
            <dd class="col-sm-8"><%=link_to @item.user.name, user_path(@item.user.id) %></dd>
-           <dt class="col-sm-4">Catagory</dt>
+           <dt class="col-sm-4">Category:</dt>
            <dd class="col-sm-8"><%= @item.catagory %></dd>
            <% unless @item.user_id == current_user.id %>
            <dt class="col-sm-4">Distance</dt>
            <dd class="col-sm-8"><%= Google::Maps.distance("#{@item.user.location}", "#{current_user.location}") %></dd>
             <% end %>
             </dl>
+
 
           <div class="hire-opt">
          <% unless @item.user_id == current_user.id || (@item.hires.length > 0 && @item.hires.last.hired == true)%>
@@ -47,7 +49,7 @@
              :item_id => @item.id,
              :user_id=> current_user.id,
              :hired => 1} ,
-             :method=>:post, class: "btn btn-success btn-lg" %>
+             :method=>:post, class: "item_button" %>
          <% end %>
 
          <% @item.hires.each do |hire| %>
@@ -56,9 +58,8 @@
           <% end %>
          <% end %>
          <%  if @item.user.id  == current_user.id %>
-           <%= button_to 'Edit', edit_item_path(@item), method: :get, class: "btn btn-success btn-lg"%>
+           <%= button_to 'Edit', edit_item_path(@item), method: :get, class: "item_button"%>
          <% end %>
-         </div>
        </div>
      </div>
 
@@ -68,7 +69,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h5>Location:<% @item.user.location %></h5>
+        <br>
+        <h3 class="item_title">Location:<% @item.user.location %></h3>
+        <br>
           <iframe width="100%" height="400" frameborder="0" style="webkit-border-radius:20px;"
          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB67HJnfJOIlyBoeagBpfvIzXniJaql1dA&q='<%=@item.user.location%>'"
          allowfullscreen>
@@ -83,7 +86,8 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h3>Item Reviews</h3>
+        <h3 class="item_title">Item Reviews</h3>
+        <br>
         <%  if @item.review.length == 0 %>
         <p>No reviews for this item yet!</p>
         <% else %>
