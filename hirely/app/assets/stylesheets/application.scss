@@ -59,14 +59,25 @@ body {
   position: relative;
 }
 
+.logo_icon {
+
+  margin-bottom: 15px;
+}
+
 .logo{
-  font-family: 'Lobster', cursive;
+  font-style: italic;
+  font-family: 'Playfair Display SC', serif;
+  // font-style: italic;
+
+  color:#11554e;
+  // font-family: 'Lobster', cursive;
   font-size: 45px;
   padding: 10px;
 }
 
 
 .logo-container{
+
   display: inline-flex;
   align-items: center;
 }

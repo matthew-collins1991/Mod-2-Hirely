@@ -76,6 +76,8 @@ margin: 25px 0px 25px 0px;
 .profile_button_wrapper{
 
 display: flex;
+justify-content: center;
+
 
 }
 
@@ -86,8 +88,8 @@ display: flex;
   border: none;
   border-radius: 12px;
   padding: 10px 20px;
-  
-  // margin: 10px;
+
+    margin: 10px;
   // margin-left: -10px;
 
 
@@ -113,5 +115,10 @@ margin-left: 30px;
     transition: .5s ease;
     backface-visibility: hidden;
 }
+
+.card:hover .profile_card_img {
+  opacity: 0.2;
+}
+
 
 //  item display
