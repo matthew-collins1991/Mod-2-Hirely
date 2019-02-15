@@ -1,3 +1,7 @@
+
+
+<div class="profile-card">
+
 <div class="container">
   <div class="row">
     <div class="col-12">
@@ -16,26 +20,37 @@
 
       <div class="col-6">
         <div class = "name-pad">
-          <h1><%= @user.name.capitalize %></h1>
+          <h1 class="title"><%= @user.name%></h1>
         </div>
+<br>
+<div class="profile_button_wrapper">
+
 
         <div class="col-3">
-          <%= button_to 'Log out', logout_path, method: :delete, class: "btn-lg btn-info"%>
+          <%= button_to 'Log out', logout_path, method: :delete, class: "profile_button"%>
         </div>
         <br>
         <div class="col-3">
-          <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "btn-lg btn-info"%>
+          <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "profile_button"%>
         </div>
-
+</div>
       </div>
     </div>
   </div>
 <br>
 
+<!-- div for profile card -->
+</div>
+
+<div class="my_item_wrapper">
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-12">
-<h2>All My Items</h2>
+<h2 class="title">All My Items</h2>
+<br>
     </div>
   </div>
 </div>
@@ -43,6 +58,7 @@
 
 <div class="container">
   <div class="row">
+  <section class="card-container">
 <% @user.item.each do |item|%>
 
 
@@ -62,7 +78,7 @@
 
                 <div class="col-6">
                   <dl class="row">
-                    <dt class="col-sm-12"><h3><%= item.name %></h3></dt>
+                    <dt class="col-sm-12"><h3><%= item.name.capitalize %></h3></dt>
                     <dt class="col-sm-4">Price</dt>
                     <dd class="col-sm-8">£<%= item.price %> per/day</dd>
                     <dt class="col-sm-4">Item Owner</dt>
@@ -70,9 +86,14 @@
                     <dt class="col-sm-4">Catagory</dt>
                     <dd class="col-sm-8"><%= item.catagory %></dd>
                   </dl>
-                  <%= button_to 'View', item_path(item), method: :get, class: "btn btn-success btn-lg"%>
+                  <div class="profile_button_wrapper">
+
+
+                  <%= button_to 'View', item_path(item), method: :get, class: "profile_button item_btn"%>
                   <br>
-                  <%= button_to 'Edit', edit_item_path(item), method: :get, class: "btn btn-success btn-lg"%>
+                  <%= button_to 'Edit', edit_item_path(item), method: :get, class: "profile_button item_btn"%>
+
+                  </div>
                 </div>
               </div>
               </div>
@@ -80,13 +101,22 @@
           </div>
         </div>
             <% end %>
+            </div>
 
     </div>
   </div>
 
+<!-- end of items div -->
+  </div>
+
+
   <br>
 
-<h2>Hired history:</h2>
+  <div class="hire_history">
+
+
+
+<h2 class="title">Hired history:</h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -99,20 +129,20 @@
     <tbody class= "table-row">
       <tr>
 
-        <td><h5><%= link_to hire.item.name, item_path(hire.item.id) %></h5></td>
+        <td><h5><%= link_to hire.item.name.capitalize, item_path(hire.item.id) %></h5></td>
 
         <td><% if hire.hired == true && hire.user_id == @user.id%>
-          <h5>Item Status: You are currently hiring this item.</h5>
+          <h5 class="text">Item Status: You are currently hiring this item.</h5>
           <% elsif hire.hired == true && hire.user_id != @user.id%>
-          <h5>Item Status: Currently Unavailable</h5>
+          <h5 class="text">Item Status: Currently Unavailable</h5>
           <% elsif hire.hired == false %>
-          <h5>Item Status: Available</h5>
+          <h5 class="text">Item Status: Available</h5>
           <% else %>
-          <h5>error somewhere</h5>
+          <h5 class="text">error somewhere</h5>
         <% end %></td>
 
         <td><% if hire.hired == true && hire.user_id == @user.id%>
-          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "btn btn-success btn-lg"%>
+          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "form_button"%>
         <% else %>
           <h5>item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
           <% end %>
@@ -127,6 +157,8 @@
   </table>
 
 
+  <!-- end of hired history -->
+  </div>
 
 </div>
 </div>

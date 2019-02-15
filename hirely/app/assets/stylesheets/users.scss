@@ -1,6 +1,8 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 .navbar {
 
   margin-bottom: 30px
@@ -37,4 +39,64 @@ border: 1px solid #acc9c7;
 
 .name-pad{
   padding-left: 15px;
+  font-family: 'Playfair Display', serif;
+
   }
+
+.profile-card {
+
+
+}
+
+.my_item_wrapper{
+font-family: 'Playfair Display', serif;
+background: white;
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin: 25px 0px 25px 0px;
+
+
+}
+
+.hire_history{
+  font-family: 'Playfair Display', serif;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: auto;
+}
+
+
+.text{
+
+  font-family: 'Playfair Display', serif;
+}
+
+
+.profile_button_wrapper{
+
+display: flex;
+
+}
+
+.profile_button {
+
+  background-color: #acc9c7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+
+  margin: auto;
+
+
+}
+
+.col-3 {
+margin-left: 30px;
+}
+
+.item_btn {
+margin-left: 10px;
+
+}
