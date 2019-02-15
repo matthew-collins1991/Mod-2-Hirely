@@ -3,22 +3,110 @@
     <div class="col-12">
       <div class="box">
 
+
         <div class="title">
           <h1>Analytics</h1>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+        <div class="title">
+          <h2>Totals</h2>
+        </div>
         <br>
 
-        <h5>Total users in system: <%= @users.length %></h5>
-        <h5>Total items in system: <%= @items.length %></h5>
-        <h5>Total reviews in system: <%= @item_reviews.length %></h5>
-        <h5>Number of times items have been hired: <%= @hires.length %></h5>
+        <div class="sub-title">
+          <h4>Total Users, Items, Reviews and Hires in the system</h4>
+        </div>
 
-        <%= Google::Maps.distance("NW10 5TN", "E14 7FP") %>
+<%= bar_chart [["Users", @users.count],
+                ["Items", @items.count],
+                  ["Item Reviews", @item_reviews.count],
+                    ["Hires", @hires.count]] %>
+
+        <br>
       </div>
-
     </div>
-
   </div>
+</div>
 
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+        <div class="title">
+          <h2>Users</h2>
+        </div>
+        <br>
+
+        <div class="sub-title">
+          <h4>Number of users created over time</h4>
+        </div>
+          <%= line_chart @users.group_by_day(:created_at).count, xtitle: "Date", ytitle: "No. of new users"%>
+        <br>
+
+        <div class="sub-title">
+          <h4>Number of users created in the past week</h4>
+        </div>
+          <%= column_chart @users.group_by_day_of_week(:created_at, format: "%a").count, xtitle: "Week Day", ytitle: "No. of new users" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+        <div class="title">
+          <h2>Items</h2>
+        </div>
+        <br>
+
+        <div class="sub-title">
+          <h4>Number of items created over time</h4>
+        </div>
+        <%= line_chart @items.group_by_day(:created_at).count %>
+        <br>
+        <br>
+        <div class="sub-title">
+          <h4>Distribution of items by catagory</h4>
+        </div>
+        <%= pie_chart @items.group(:catagory).count %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="box">
+        <div class="title">
+          <h2>Item Reviews</h2>
+        </div>
+        <br>
+
+        <div class="sub-title">
+          <h4>Positve vs Negative reviews</h4>
+        </div>
+        <%= pie_chart @item_reviews.group(:reaction).count %>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>

@@ -8,8 +8,13 @@ before_action :find_item_review, only: [:show]
   def create
 
     @item_review = ItemReview.create(item_review_params)
-    redirect_to @item_review
+
+    if  !!item_review_params[:reaction] && @item_review.save
+    redirect_to @item_review, success: "Your new review has been created"
+  else
+    redirect_to hire_path(@item_review.hire_id), danger: "Something went wrong, please try again"
   end
+end
 
   def show
   end

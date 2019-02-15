@@ -58,6 +58,8 @@
 
 <% end %>
 <br>
+<% if @item.id != nil %>
 <%= button_to 'Delete item', item_path(@item), method: :delete, class: "form_button"%>
+<% end %>
 
 </div>
