@@ -39,11 +39,17 @@
 
  .navbar {
 
-   margin-bottom: 30px;
+   // margin-bottom: 30px;
    // background-color: #CFE6E8;
    background-color: #acc9c7;
-   height: 85px;
+   height: 80px;
+
  }
+
+.nav-item:hover {
+
+  background-color: #c8e3e1;
+}
 
 
 
@@ -207,6 +213,8 @@ top: auto;
 .title {
 text-align: center;
 font-family: 'Playfair Display', serif;
+
+color: #08413a;
 
 }
 
