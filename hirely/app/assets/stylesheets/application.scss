@@ -155,7 +155,7 @@ align-items: center;
   border-radius: 12px;
   display: absolute;
   // top: 100px;
-  // width: 100;
+   width: 225px;
   float: left;
   margin: 20px 20px;
 
@@ -219,12 +219,15 @@ color: #08413a;
 }
 
 .form_button{
-display: block;
-background-color: #acc9c7;
-border: none;
-border-radius: 12px;
-padding: 10px 20px;
-margin: auto;
+  display: block;
+  background-color: #acc9c7;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin: auto;
+
 }
 
 .box{
@@ -241,6 +244,32 @@ margin: auto;
   padding: 6px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.success_button{
+
+  // display: block;
+  background-color: #acc9c7;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  // margin: auto;
+
+}
+
+.review_button{
+
+  display: block;
+  background-color: #acc9c7;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  margin: auto;
+
 }
 
 

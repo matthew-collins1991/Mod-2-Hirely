@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-12">
       <div class="box">
-  <h2> Thank you for creating a review for the <%= @item_review.hire.item.name %></h2>
+  <h4 class="text"> Thank you for leaving a review for the <%= @item_review.hire.item.name.capitalize %></h2>
 
   <div class="col-3">
-    <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+    <%= button_to 'All Items', items_path, method: :get, class: "success_button"%>
   </div>
 
       </div>

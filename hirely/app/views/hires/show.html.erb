@@ -8,22 +8,22 @@
 
 <% if @hire.hired == true %>
 
-<h4>Congratulations! You have hired the <%= @hire.item.name %></h4>
+<h4 class="text">Congratulations! You have hired the <%= @hire.item.name.capitalize %></h4>
 
 <div class="col-3">
-  <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+  <%= button_to 'All Items', items_path, method: :get, class: "success_button"%>
 </div>
 
 <% else %>
 
-<h4>Thank you for returning the <%= @hire.item.name %>. We hope you enjoyed using Hirely!</h4>
+<h4 class="text">Thank you for returning the <%= @hire.item.name.capitalize %>. We hope you enjoyed using Hirely!</h4>
 <br>
 <div class="col-3">
-  <%= button_to 'All Items', items_path, method: :get, class: "btn-lg btn-info"%>
+  <%= button_to 'All Items', items_path, method: :get, class: "success_button"%>
 </div>
 
 <br>
-<h5>Would you like to write a review?</h5>
+<h5 class="text">Would you like to write a review?</h5>
 <%= render 'review_form' %>
 <% end %>
 
