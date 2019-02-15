@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Playfair+Display+SC" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -22,13 +23,13 @@
 <div class="logo_wrapper">
 
   <div class="logo-container">
-    <%= image_tag src="sewing-machine.png", height: "45px" %>
-      <%= link_to "Hirely", menu_path, class:"navbar-brand logo" %>
+    <%= image_tag src="sewing-machine.png", height: "45px", class:"logo_icon"%>
+      <%= link_to image_tag("logo4.png", height: "100px"), menu_path, class:"navbar-brand logo" %>
   </div>
   <% else %>
   <div class="logo-container">
-    <%= image_tag src="sewing-machine.png", height: "45px" %>
-      <%= link_to "Hirely", root_path, class:"navbar-brand logo" %>
+    <%= image_tag src="sewing-machine.png", height: "45px", class:"logo_icon" %>
+      <%= link_to image_tag("logo4.png", height: "100px"), root_path, class:"navbar-brand logo" %>
   </div>
   <% end  %>
 

@@ -26,13 +26,13 @@
 <div class="profile_button_wrapper">
 
 
-        <div class="col-3">
+        <!-- <div class="col"> -->
           <%= button_to 'Log out', logout_path, method: :delete, class: "profile_button"%>
-        </div>
+        <!-- </div> -->
         <br>
-        <div class="col-3">
+        <!-- <div class="col-3"> -->
           <%= button_to 'Edit Profile', edit_user_path(@user), method: :get, class: "profile_button"%>
-        </div>
+        <!-- </div> -->
 </div>
       </div>
     </div>
@@ -88,7 +88,7 @@
          </main>
          <div class="middle">
 
-                           <%= button_to 'View', item_path(item), method: :get, class: "view_button"%>
+                    <%= button_to 'View', item_path(item), method: :get, class: "view_button"%>
                     <br>
                     <%= button_to 'Edit', edit_item_path(item), method: :get, class: "view_button"%>
        </div>
@@ -145,9 +145,9 @@
         <% end %></td>
 
         <td><% if hire.hired == true && hire.user_id == @user.id%>
-          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "form_button"%>
+          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "success_button"%>
         <% else %>
-          <h5>item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
+          <h5 class="text">Item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
           <% end %>
         </td>
 
