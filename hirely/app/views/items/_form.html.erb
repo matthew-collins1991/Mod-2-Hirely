@@ -1,11 +1,12 @@
 
 <div class="item-form">
-
-
-  <h2 class="title">
+<h2 class="title">
+    <% if @item.id == nil %>
     Add Item
-  </h2>
-
+  <% else %>
+    Edit Item
+    <% end %>
+      </h2>
 <br>
 
 <div class"forms">
@@ -48,9 +49,15 @@
 </div>
 
 <br>
+<% if @item.id == nil %>
+<%= f.submit "Add Item", class:"form_button"%>
+<% else %>
+<%= f.submit "Edit Item", class:"form_button"%>
+<% end %>
 
-  <%= f.submit "Add Item", class:"form_button"%>
 
 <% end %>
+<br>
+<%= button_to 'Delete item', item_path(@item), method: :delete, class: "form_button"%>
 
 </div>

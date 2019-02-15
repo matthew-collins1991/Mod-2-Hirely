@@ -1,10 +1,13 @@
 
 
 <div class="sign-up-form">
-
-
-  <h2 class="title">
-  Sign up
+  
+<h2 class="title">
+  <% if @user.id == nil %>
+Sign up
+  <% else %>
+Edit Profile
+  <% end %>
   </h2>
 
   <br>
@@ -60,8 +63,12 @@
 </div>
 
 <br>
+<% if @user.id == nil %>
+<%= f.submit "Sign up",  class:"form_button" %>
+<% else %>
+<%= f.submit "Edit Profile",  class:"form_button" %>
+<% end %>
 
-  <%= f.submit "Sign up",  class:"form_button" %>
 
 <% end %>
 

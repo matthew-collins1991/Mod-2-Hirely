@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -20,10 +21,15 @@
 
 <div class="logo_wrapper">
 
-
-    <%= link_to "Hirely", menu_path, class:"navbar-brand" %>
+  <div class="logo-container">
+    <%= image_tag src="sewing-machine.png", height: "45px" %>
+      <%= link_to "Hirely", menu_path, class:"navbar-brand logo" %>
+  </div>
   <% else %>
-    <%= link_to "Hirely", root_path, class:"navbar-brand" %>
+  <div class="logo-container">
+    <%= image_tag src="sewing-machine.png", height: "45px" %>
+      <%= link_to "Hirely", root_path, class:"navbar-brand logo" %>
+  </div>
   <% end  %>
 
 </div>

@@ -50,6 +50,18 @@ body {
   position: relative;
 }
 
+.logo{
+  font-family: 'Lobster', cursive;
+  font-size: 45px;
+  padding: 10px;
+}
+
+
+.logo-container{
+  display: inline-flex;
+  align-items: center;
+}
+
 .body_wrapper{
 
    display: unset;
@@ -210,6 +222,7 @@ footer {
            }
            footer h3 {
              margin-bottom: 30px;
+             font-family: 'Playfair Display', serif;
            }
            footer .footer-above {
              padding-top: 10px;
