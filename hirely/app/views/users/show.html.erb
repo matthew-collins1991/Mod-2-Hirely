@@ -105,7 +105,7 @@
 
 
 
-
+<br>
 
   </div>
 
@@ -113,55 +113,59 @@
   </div>
 
 
-  <br>
-
-  <div class="hire_history">
-
-
-
-<h2 class="title">Hired history:</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Item Name</th>
-        <th scope="col">Item Status</th>
-        <th scope="col">Return?</th>
-      </tr>
-    </thead>
-    <% @user.hired.reverse_each do |hire|%>
-    <tbody class= "table-row">
-      <tr>
-
-        <td><h5><%= link_to hire.item.name.capitalize, item_path(hire.item.id) %></h5></td>
-
-        <td><% if hire.hired == true && hire.user_id == @user.id%>
-          <h5 class="text">Item Status: You are currently hiring this item.</h5>
-          <% elsif hire.hired == true && hire.user_id != @user.id%>
-          <h5 class="text">Item Status: Currently Unavailable</h5>
-          <% elsif hire.hired == false %>
-          <h5 class="text">Item Status: Available</h5>
-          <% else %>
-          <h5 class="text">error somewhere</h5>
-        <% end %></td>
-
-        <td><% if hire.hired == true && hire.user_id == @user.id%>
-          <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "success_button"%>
-        <% else %>
-          <h5 class="text">Item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
-          <% end %>
-        </td>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="box">
 
 
 
 
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
+        <h2 class="title">Hired history:</h2>
+        <br>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Item Status</th>
+                <th scope="col">Return?</th>
+              </tr>
+            </thead>
+            <% @user.hired.reverse_each do |hire|%>
+            <tbody class= "table-row">
+              <tr>
 
+                <td><h5><%= link_to hire.item.name.capitalize, item_path(hire.item.id) %></h5></td>
+
+                <td><% if hire.hired == true && hire.user_id == @user.id%>
+                  <h5 class="text">Item Status: You are currently hiring this item.</h5>
+                  <% elsif hire.hired == true && hire.user_id != @user.id%>
+                  <h5 class="text">Item Status: Currently Unavailable</h5>
+                  <% elsif hire.hired == false %>
+                  <h5 class="text">Item Status: Available</h5>
+                  <% else %>
+                  <h5 class="text">error somewhere</h5>
+                <% end %></td>
+
+                <td><% if hire.hired == true && hire.user_id == @user.id%>
+                  <%= button_to 'Return', {:controller => "hires", :action => "update", :item_id => hire.item_id, :user_id=> current_user.id, :hired => 0, :id => hire.id} , :method=>:patch, class: "success_button"%>
+                <% else %>
+                  <h5 class="text">Item returned <%= time_ago_in_words(hire.created_at) %> ago</h5>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+
+
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- end of hired history -->
-  </div>
+
 
 </div>
 </div>
