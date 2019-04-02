@@ -3,9 +3,6 @@
 
       <%= hidden_field_tag :hire_id %>
       <%= hidden_field_tag :hire_id, "#{@hire.id}" %>
-    <br>
-
-<%= render 'radio_controls' %>
 
     <br>
 <div class="form-group">
@@ -13,6 +10,10 @@
     <br>
       <%= text_area_tag :content, content = nil, class: "form-control", rows:"3" %>
 </div>
+
+<br>
+
+<%= render 'radio_controls' %>
 
     <br>
       <%= submit_tag ("Post Review"), class: "review_button" %>
